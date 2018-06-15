@@ -9,10 +9,24 @@ it('should add two numbers', () => {
 
 });
 
+it('should async add two numbers', (done) => {
+  utils.asyncAdd(4, 3, (sum) => {
+    expect(sum).toBe(7).toBeA('number')
+    done()
+  })
+})
+
 it('should square the number', () => {
   let res = utils.square(15)
 
   expect(res).toBe(225).toBeA('number')
+})
+
+it('should async square the number', (done) => {
+  utils.asyncSquare(7, (square) => {
+    expect(square).toBe(49).toBeA('number')
+    done()
+  })
 })
 
 it('should verify first and last names are set', () => {
@@ -21,15 +35,3 @@ it('should verify first and last names are set', () => {
 
   expect(user).toInclude({firstName: 'greg', lastName: 'yanushkovskiy'})
 })
-
-// it('should expect some values', () => {
-//   // expect(12).toNotBe(11)
-//   // expect({name: 'greg'}).toEqual({name: 'Greg'})
-//   // expect([2,3,4]).toExclude(1)
-//   expect({
-//     name: 'Greg',
-//     age: 24
-//   }).toExclude({
-//     age: 23
-//   })
-// })
